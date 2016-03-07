@@ -15,6 +15,11 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentField: UITextField!
     @IBOutlet weak var commentContainer: UIView!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    var selectedImageView: UIImageView!
+    
+    var imageTransition: ImageTransition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,8 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        imageTransition = ImageTransition()
         
         scrollView.contentInset.top = 0
         scrollView.contentInset.bottom = 0
@@ -37,11 +44,11 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
             
             // Get the keyboard height and width from the notification
             // Size varies depending on OS, language, orientation
-            var kbSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size
-            var durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-            var animationDuration = durationValue.doubleValue
-            var curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
-            var animationCurve = curveValue.integerValue
+            let kbSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size
+            let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+            let animationDuration = durationValue.doubleValue
+            let curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
+            let animationCurve = curveValue.integerValue
 
             
             UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions(rawValue: UInt(animationCurve << 16)), animations: {
@@ -54,11 +61,11 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
             
             // Get the keyboard height and width from the notification
             // Size varies depending on OS, language, orientation
-            var kbSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().size
-            var durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-            var animationDuration = durationValue.doubleValue
-            var curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
-            var animationCurve = curveValue.integerValue
+            let kbSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().size
+            let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+            let animationDuration = durationValue.doubleValue
+            let curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
+            let animationCurve = curveValue.integerValue
             
             UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions(rawValue: UInt(animationCurve << 16)), animations: {
                 self.commentContainer.frame.origin.y = self.scrollView.frame.size.height + self.scrollView.frame.origin.y
@@ -87,16 +94,6 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
         view.endEditing(true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @IBAction func onEditingBegan(sender: AnyObject) {
         
         UIView.animateWithDuration(2, animations: { () -> Void in
@@ -106,4 +103,22 @@ class StoryViewController: UIViewController, UIGestureRecognizerDelegate {
             
         })
     }
-}
+    
+    
+    @IBAction func didTapPhoto(sender: UITapGestureRecognizer) {
+        
+        selectedImageView = sender.view as! UIImageView
+        performSegueWithIdentifier("PhotoSegue", sender: self)
+        
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        let destinationViewController = segue.destinationViewController as! PhotoViewController
+        destinationViewController.image = self.selectedImageView.image
+        
+        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        destinationViewController.transitioningDelegate = imageTransition
+    }
+
+  }

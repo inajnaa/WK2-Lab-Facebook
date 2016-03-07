@@ -20,8 +20,12 @@
 		429277A4198F391500E19641 /* CreateStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A3198F391500E19641 /* CreateStatusViewController.swift */; };
 		429277A6198F392800E19641 /* CreatePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A5198F392800E19641 /* CreatePhotoViewController.swift */; };
 		429277A8198F393500E19641 /* CreateCheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A7198F393500E19641 /* CreateCheckinViewController.swift */; };
+		898997F31C890B9200862D68 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898997F21C890B9200862D68 /* PhotoViewController.swift */; };
 		89DEA7711C6C337B00EF8A9B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DEA7701C6C337B00EF8A9B /* Common.swift */; };
 		89DEA7731C6C33A800EF8A9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DEA7721C6C33A800EF8A9B /* LoginViewController.swift */; };
+		89F3D2931C8929AF0086E018 /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F3D2911C8929AF0086E018 /* BaseTransition.swift */; };
+		89F3D2941C8929AF0086E018 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F3D2921C8929AF0086E018 /* FadeTransition.swift */; };
+		89F3D2961C8929DC0086E018 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F3D2951C8929DC0086E018 /* ImageTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +56,12 @@
 		429277A3198F391500E19641 /* CreateStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStatusViewController.swift; sourceTree = "<group>"; };
 		429277A5198F392800E19641 /* CreatePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePhotoViewController.swift; sourceTree = "<group>"; };
 		429277A7198F393500E19641 /* CreateCheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckinViewController.swift; sourceTree = "<group>"; };
+		898997F21C890B9200862D68 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		89DEA7701C6C337B00EF8A9B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		89DEA7721C6C33A800EF8A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		89F3D2911C8929AF0086E018 /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
+		89F3D2921C8929AF0086E018 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		89F3D2951C8929DC0086E018 /* ImageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +151,20 @@
 				429277A5198F392800E19641 /* CreatePhotoViewController.swift */,
 				429277A7198F393500E19641 /* CreateCheckinViewController.swift */,
 				89DEA7721C6C33A800EF8A9B /* LoginViewController.swift */,
+				898997F21C890B9200862D68 /* PhotoViewController.swift */,
+				89F3D2971C8934B80086E018 /* Transitions */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		89F3D2971C8934B80086E018 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				89F3D2911C8929AF0086E018 /* BaseTransition.swift */,
+				89F3D2921C8929AF0086E018 /* FadeTransition.swift */,
+				89F3D2951C8929DC0086E018 /* ImageTransition.swift */,
+			);
+			name = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				89DEA7731C6C33A800EF8A9B /* LoginViewController.swift in Sources */,
+				89F3D2941C8929AF0086E018 /* FadeTransition.swift in Sources */,
 				429277A0198F068E00E19641 /* StoryViewController.swift in Sources */,
 				429277A2198F35B600E19641 /* MessagesViewController.swift in Sources */,
+				89F3D2931C8929AF0086E018 /* BaseTransition.swift in Sources */,
 				42167676198ECA7C008CCBC3 /* NotificationsViewController.swift in Sources */,
 				42167656198E3220008CCBC3 /* AppDelegate.swift in Sources */,
 				89DEA7711C6C337B00EF8A9B /* Common.swift in Sources */,
@@ -260,6 +282,8 @@
 				42167678198ECE0E008CCBC3 /* RequestsViewController.swift in Sources */,
 				42167673198EAABC008CCBC3 /* SettingsViewController.swift in Sources */,
 				4216767A198ECE88008CCBC3 /* NewsFeedViewController.swift in Sources */,
+				89F3D2961C8929DC0086E018 /* ImageTransition.swift in Sources */,
+				898997F31C890B9200862D68 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
